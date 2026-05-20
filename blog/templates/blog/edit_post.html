@@ -1,0 +1,45 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 700px;">
+    <h2 class="mb-4">Edit Blog Post</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" value="{{ post.title }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="description" class="form-label">Short Description</label>
+            <textarea class="form-control" id="description" name="description" rows="2" required>{{ post.description }}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="content" class="form-label">Full Content</label>
+            <textarea class="form-control" id="content" name="content" rows="6" required>{{ post.content }}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Change Image</label>
+            {% if post.image %}
+            <p>Current: <img src="{{ post.image.url }}" alt="Blog image" width="150"></p>
+            {% endif %}
+            <input type="file" class="form-control" id="image" name="image">
+        </div>
+
+        <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select class="form-select" id="category" name="category">
+                <option value="food" {% if post.category == 'food' %}selected{% endif %}>Food</option>
+                <option value="travel" {% if post.category == 'travel' %}selected{% endif %}>Travel</option>
+                <option value="technology" {% if post.category == 'technology' %}selected{% endif %}>Technology</option>
+                <option value="fashion" {% if post.category == 'fashion' %}selected{% endif %}>Fashion</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Update Post</button>
+    </form>
+</div>
+{% endblock %}

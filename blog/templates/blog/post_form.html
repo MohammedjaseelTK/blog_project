@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class="max-w-2xl mx-auto">
+  <div class="bg-white p-6 rounded-lg shadow">
+    <h2 class="text-xl font-semibold mb-4">{{ mode }} Post</h2>
+    <form method="post" enctype="multipart/form-data" class="space-y-4">
+      {% csrf_token %}
+      <div>
+        <label class="block mb-1">Title</label>
+        {{ form.title }}
+      </div>
+      <div>
+        <label class="block mb-1">Content</label>
+        {{ form.content }}
+      </div>
+      <div>
+        <label class="block mb-1">Image</label>
+        {{ form.image }}
+      </div>
+      <button class="px-4 py-2 bg-blue-600 text-white rounded">{{ mode }}</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

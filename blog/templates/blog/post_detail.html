@@ -1,0 +1,47 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class="max-w-3xl mx-auto space-y-8">
+
+  <!-- Post -->
+  <article class="bg-white rounded-lg shadow p-6">
+    <h1 class="text-2xl font-bold">{{ post.title }}</h1>
+    <p class="text-sm text-gray-500">
+      By {{ post.author.username }} • {{ post.created_at|date:"M d, Y" }}
+    </p>
+    {% if post.image %}
+      <img src="{{ post.image.url }}" class="rounded mt-4 mb-4">
+    {% endif %}
+    <div class="prose">{{ post.content|linebreaks }}</div>
+  </article>
+
+  <!-- Comments -->
+  <section class="bg-white rounded-lg shadow p-6">
+    <h2 class="text-xl font-semibold mb-4">Comments</h2>
+
+    <!-- Comment Form -->
+    {% if user.is_authenticated %}
+      <form method="post" action="{% url 'add_comment' post.id %}" class="mb-6">
+        {% csrf_token %}
+        <textarea name="content" rows="3" class="w-full border rounded-lg p-3 focus:ring focus:ring-blue-300" placeholder="Write a comment..." required></textarea>
+        <button type="submit" class="mt-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+          Add Comment
+        </button>
+      </form>
+    {% else %}
+      <p class="text-gray-600">Please <a href="{% url 'login' %}" class="text-blue-600 underline">log in</a> to add a comment.</p>
+    {% endif %}
+
+    <!-- Comment List -->
+    {% for comment in post.comments.all %}
+      <div class="border-t pt-4 mt-4">
+        <p class="font-semibold">{{ comment.user.username }}</p>
+        <p class="text-gray-700">{{ comment.content }}</p>
+        <small class="text-gray-500">{{ comment.created_at|date:"M d, Y H:i" }}</small>
+      </div>
+    {% empty %}
+      <p class="text-gray-500">No comments yet. Be the first to comment!</p>
+    {% endfor %}
+  </section>
+
+</div>
+{% endblock %}

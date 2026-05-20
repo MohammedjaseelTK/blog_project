@@ -1,0 +1,54 @@
+{% block content %}
+
+<!-- Latest Posts -->
+<section class="py-16 bg-gray-50">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold mb-10 text-center">Latest Blog</h2>
+
+    <!-- Grid layout -->
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {% for post in posts %}
+      <div class="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition duration-300">
+        
+        <!-- Post Image -->
+        {% if post.image %}
+        <img src="{{ post.image.url }}" alt="{{ post.title|default:'Blog post image' }}" 
+             class="w-full h-48 object-cover hover:scale-105 transform transition duration-300">
+        {% else %}
+        <div class="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-500">
+          No Image
+        </div>
+        {% endif %}
+
+        <!-- Card Body -->
+        <div class="p-6">
+          <!-- Category -->
+          {% if post.category %}
+          <span class="inline-block bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full mb-3">
+            {{ post.category.name }}
+          </span>
+          {% endif %}
+
+          <!-- Title -->
+          <h3 class="text-xl font-semibold mb-2">{{ post.title }}</h3>
+          
+          <!-- Content -->
+          <p class="text-gray-600 text-sm mb-4">
+            {{ post.content|truncatewords:20 }}
+          </p>
+
+          <!-- Read More -->
+          <a href="{% url 'post_detail' post.pk %}" 
+             class="text-indigo-600 font-medium hover:underline">
+            Read More →
+          </a>
+        </div>
+      </div>
+      {% empty %}
+      <p class="text-center text-gray-500">No posts found.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}

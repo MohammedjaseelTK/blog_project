@@ -1,0 +1,39 @@
+{% block content %}
+
+<div class="flex justify-center mt-10">
+  <div class="w-full max-w-lg bg-white p-8 rounded-2xl shadow-lg border border-gray-300">
+    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+      ✨ Create a New Post
+    </h2>
+
+    <form method="post" enctype="multipart/form-data" class="space-y-5">
+      {% csrf_token %}
+
+      <!-- Title -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">Title</label>
+        {{ form.title }}
+      </div>
+
+      <!-- Caption -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">Caption</label>
+        {{ form.caption }}
+      </div>
+
+      <!-- Image Upload -->
+      <div>
+        <label class="block text-gray-700 font-medium mb-1">Upload Image</label>
+        {{ form.image }}
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" 
+        class="w-full py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition">
+        🚀 Post
+      </button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

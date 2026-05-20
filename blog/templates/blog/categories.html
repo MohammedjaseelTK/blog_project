@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Categories - MyBlog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .category-card {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.2s ease;
+      }
+      .category-card:hover {
+        transform: scale(1.02);
+      }
+      .category-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .category-content {
+        padding: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h2 class="mb-4 text-center">Categories</h2>
+      <div class="row g-4">
+        <!-- Technology -->
+        <div class="col-md-6 col-lg-4">
+          <div class="category-card">
+            <img src="{% static 'blog/images/tech.jpg' %}" alt="Technology" class="category-image" />
+            <div class="category-content">
+              <h5>Technology</h5>
+              <p>Posts related to the latest in tech and development.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Travel -->
+        <div class="col-md-6 col-lg-4">
+          <div class="category-card">
+            <img src="{% static 'blog/images/travel.jpg' %}" alt="Travel" class="category-image" />
+            <div class="category-content">
+              <h5>Travel</h5>
+              <p>Experiences and guides from around the world.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lifestyle -->
+        <div class="col-md-6 col-lg-4">
+          <div class="category-card">
+            <img src="{% static 'blog/images/life.jpg' %}" alt="Lifestyle" class="category-image" />
+            <div class="category-content">
+              <h5>Lifestyle</h5>
+              <p>Health, wellness, and everyday tips.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="col-md-6 col-lg-4">
+          <div class="category-card">
+            <img src="{% static 'blog/images/edu.webp' %}" alt="Education" class="category-image" />
+            <div class="category-content">
+              <h5>Education</h5>
+              <p>Learning resources and study tips.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arts and Culture -->
+        <div class="col-md-6 col-lg-4">
+          <div class="category-card">
+            <img src="{% static 'blog/images/culture.jpg' %}" alt="Arts and Culture" class="category-image" />
+            <div class="category-content">
+              <h5>Arts and Culture</h5>
+              <p>Explore creativity, history, and cultural highlights.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Food -->
+        <div class="col-md-6 col-lg-4">
+          <div class="category-card">
+            <img src="{% static 'blog/images/food.jpg' %}" alt="Food" class="category-image" />
+            <div class="category-content">
+              <h5>Food</h5>
+              <p>Recipes, culinary tips, and delicious inspirations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<br>

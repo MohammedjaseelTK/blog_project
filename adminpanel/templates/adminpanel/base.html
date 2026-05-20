@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Admin Dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'adminpanel/css/style2.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="profile">
+        <img src="{% static 'blog/images/tech.jpg' %}" alt="Admin" />
+        <h3>Jaseel</h3>
+        <p>Administrator</p>
+      </div>
+      <ul class="menu">
+        <li><a href="{% url 'admin_dashboard' %}"><i class="fa fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="{% url 'admin_blogs' %}"><i class="fa fa-file-alt"></i> Blogs</a></li>
+        <li><a href="{% url 'admin_users' %}"><i class="fa fa-users"></i> Users</a></li>
+        <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+        <li><a href="{% url 'admin_likes' %}"><i class="fa fa-thumbs-up"></i> Likes</a></li>
+        <li><a href="{% url 'admin_comments' %}"><i class="fa fa-comments"></i> Comments</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Top Bar -->
+      <header class="topbar">
+        <input type="text" placeholder="Search..." />
+        <div class="top-icons">
+          <i class="fa fa-bell"></i>
+          <i class="fa fa-user-circle"></i>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>

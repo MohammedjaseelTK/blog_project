@@ -1,0 +1,56 @@
+body {
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  border-bottom: 2px solid #444;
+}
+.navbar-brand {
+  font-weight: bold;
+  font-size: 24px;
+}
+.navbar .btn {
+  border-radius: 20px;
+}
+
+.blog-card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+}
+.blog-card img {
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+.card-body {
+  padding: 20px;
+}
+.card-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+.card-text {
+  font-size: 14px;
+  color: #555;
+}
+
+footer {
+  background-color: #111;
+  color: #aaa;
+  text-align: center;
+  padding: 20px 0;
+}
